@@ -5,11 +5,18 @@ class Fondos_Pantalla{
     this.y = 0
     this.w = this.ctx.canvas.width
     this.h = this.ctx.canvas.height
-  }
+    this.image = new Image()
+    this.image.src = '/activos/imagenes/fondos_/level_2_turtle.png'
+    this.image.onload = ()=> {
+    
+      this.image.isReady = true
+    }
+    }
 
   draw(){
-     this.ctx.fillStyle = 'lime'
-    this.ctx.fillRect(this.x,this.y, this.w, this.h)
+    if (this.image.isReady){
+      this.ctx.drawImage(this.image, this.x, this.y, this.w, this.h)
+    }
   }
    
   move(){

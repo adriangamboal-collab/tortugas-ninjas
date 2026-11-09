@@ -1,11 +1,11 @@
-const CANVAS_W= 1000
-const CANVAS_H= 500
+const CANVAS_W= 2200
+const CANVAS_H= 400
 const FPS = 1000/60
-const MARGEN_DERECHO = 300
-const SUELO = 100
+const MARGEN_DERECHO = 600
+const SUELO = 10
 const TORTUGA_VX = 4
-const TORTUGA_VY = 9
-const TORTUGA_AY = 0.3
+const TORTUGA_VY = 14
+const TORTUGA_AY = 0.4
 
 const KEY_RIGHT = 39
 const KEY_LEFT = 37

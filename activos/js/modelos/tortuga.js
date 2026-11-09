@@ -8,6 +8,8 @@ class Tortuga {
         this.h = 20
         this.vx = 0
         this.vy = 0
+        this.ay = 0
+        this.isJumping = false 
 
     }
     groundTo(groundY){
@@ -23,24 +25,47 @@ class Tortuga {
     move (){
         this.x += this.vx
         this.y += this.vy
+        this.vy += this.ay
+        if(this.y + this.h > this.ground){
+          this.vy = 0
+          this.ay = 0
+          this.groundTo(this.ground)
+          this.isJumping = false 
+        }
+
     }
 
     onKeyEvent(event){
         const isPressed = event.type === "keydown"
-        console.log(isPressed)
-
+      
         switch (event.keyCode){
           case KEY_RIGHT:
+          if( isPressed){
             this.vx = TORTUGA_VX
+          }else{
+            this.vx = 0
+          }
             break
           case KEY_LEFT:
+             if( isPressed){
             this.vx = -TORTUGA_VX
+          }else{
+            this.vx = 0
+          }
             break
-          case KEY_UP:
+          case KEY_UP:  
+            if(!this.isJumping){
+            this.isJumping = true
             this.vy = -TORTUGA_VY
+            this.ay =  TORTUGA_AY
+          }
             break
           case KEY_DWON:
-            this.vy = TORTUGA_VY
+            if(isPressed){
+              this.vy = TORTUGA_VY
+            
+            }
+            
         }
 
     }

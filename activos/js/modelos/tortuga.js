@@ -4,12 +4,13 @@ class Tortuga {
         this.x = x
         this.y= y
         this.ground = 0
-        this.w = 20
-        this.h = 20
+        this.w = 30
+        this.h = 30
         this.vx = 0
         this.vy = 0
         this.ay = 0
         this.isJumping = false 
+        this.margenDerecho = MARGEN_DERECHO
 
     }
     groundTo(groundY){
@@ -17,8 +18,13 @@ class Tortuga {
       this.ground =groundY
 
     }
+    limiteDerechoTo(limiteX){
+      this.limiteX = limiteX
+
+    }
 
     draw(){
+      this.ctx.fillStyle = 'blue'
         this.ctx.fillRect(this.x, this.y, this.w, this.h)
     }
 
@@ -26,13 +32,35 @@ class Tortuga {
         this.x += this.vx
         this.y += this.vy
         this.vy += this.ay
+
         if(this.y + this.h > this.ground){
+
           this.vy = 0
           this.ay = 0
+
           this.groundTo(this.ground)
+
           this.isJumping = false 
         }
+         if( this.x<0){
+          this.x=0
+         }
 
+         if( this.x+this.w >this.ctx.canvas.width){
+          this.x = this.ctx.canvas.width- this.w
+         }
+         /*if (this.x + this.w > this.ctx.canvas.width- this.margenDerecho){
+          this.x= this.ctx.canvas.width - this.margenDerecho - this.w
+          if (this.vx !== 0) {
+      console.log(
+        'x:', this.x,
+        '| lado derecho:', this.x + this.w,
+        '| distancia al borde del canvas:', this.ctx.canvas.width - (this.x + this.w)
+      )
+    }
+        
+         }*/
+        
     }
 
     onKeyEvent(event){
@@ -60,7 +88,7 @@ class Tortuga {
             this.ay =  TORTUGA_AY
           }
             break
-          case KEY_DWON:
+          case KEY_DOWN:
             if(isPressed){
               this.vy = TORTUGA_VY
             

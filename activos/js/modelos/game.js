@@ -7,8 +7,10 @@ class Game {
         this.fps = FPS
         this.drawIntervalId = null
         this.ctx = this.canvas.getContext('2d')
-        this.tortuga =  new Tortuga (this.ctx, 20, 20 )
-        this.tortuga.groundTo(this.canvas.height-100)
+        this.fp= new Fondos_Pantalla(this.ctx)
+        this.tortuga =  new Tortuga (this.ctx, 30, 30 )
+        this.tortuga.groundTo(this.canvas.height-SUELO)
+        this.tortuga.limiteDerechoTo(this.canvas.width-MARGEN_DERECHO)
     }
 
 
@@ -24,7 +26,9 @@ class Game {
     } 
 
     draw(){
+      this.fp.draw()
       this.tortuga.draw()
+
     }
 
     move(){

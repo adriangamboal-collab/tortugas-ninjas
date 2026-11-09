@@ -24,7 +24,7 @@ class Tortuga {
     }
 
     draw(){
-      this.ctx.fillStyle = 'blue'
+      this.ctx.fillStyle = 'green'
         this.ctx.fillRect(this.x, this.y, this.w, this.h)
     }
 

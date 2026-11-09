@@ -8,7 +8,6 @@ class Fondos_Pantalla{
     this.image = new Image()
     this.image.src = '/activos/imagenes/fondos_/level_2_turtle.png'
     this.image.onload = ()=> {
-    
       this.image.isReady = true
     }
     }

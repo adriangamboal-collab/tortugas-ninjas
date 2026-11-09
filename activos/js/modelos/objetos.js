@@ -26,7 +26,7 @@ class Objeto {
   // Crea todos los objetos del nivel
   static crearTodos(ctx) {
     return [
-      new Objeto(ctx, 1186, 228, 414, 94, 1805, 215),  // reja
+      new Objeto(ctx, 1186, 228, 414, 94, 1900, 215,-0.2),  // reja
       new Objeto(ctx, 258, 228, 26, 48, 750, 350, ),    // hidrante
       new Objeto(ctx, 258, 228, 26, 48, 1400, 310, ),   // otro hidrante
       new Objeto(ctx, 255, 293, 71, 18, 750, 350,  ),   // otro hidrante

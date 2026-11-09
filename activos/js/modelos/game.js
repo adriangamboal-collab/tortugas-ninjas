@@ -34,6 +34,7 @@ class Game {
     }
 
     move(){
+      //this.fp.move()
       this.tortuga.move()
       this.objetos.forEach(o => o.move())
     }

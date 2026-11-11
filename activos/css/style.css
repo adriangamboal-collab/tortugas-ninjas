@@ -1,20 +1,30 @@
-body{
+body {
+   body {
     margin: 0;
     height: 100vh;
     width: 100%;
     overflow: hidden;
-}
-
-canvas{
-   border: 1px solid black;
-    max-width: 100%;          
-    height: auto;             
-    image-rendering: pixelated;
-}
-
-#canvas-container{
-    height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center;   /* centra en horizontal */
+    align-items: center;       /* centra en vertical */
+    background: #000;          /* color de las franjas alrededor */
 }
+
+}
+
+/*#canvas-container {
+    height: 100%;
+    overflow-x: auto;       
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;   
+}
+
+canvas {
+    border: 1px solid black;
+    flex-shrink: 0;   
+    margin: 0 auto;     
+    width: 3600px;         
+    height: auto;          /
+    image-rendering: pixelated;
+}*/

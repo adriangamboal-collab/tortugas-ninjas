@@ -8,8 +8,7 @@ class Game {
         this.drawIntervalId = null
         this.ctx = this.canvas.getContext('2d')
         this.fp= new Fondos_Pantalla(this.ctx)
-        this.objetos = Objeto.crearTodos(this.ctx)
-        this.tortuga =  new Tortuga (this.ctx, 30, 30 )
+        this.tortuga =  new Tortuga (this.ctx,TORTUGA_W , TORTUGA_H  )
         this.tortuga.groundTo(this.canvas.height-SUELO)
         this.tortuga.limiteDerechoTo(this.canvas.width-MARGEN_DERECHO)
     }
@@ -28,15 +27,13 @@ class Game {
 
     draw(){
       this.fp.draw()
-      this.objetos.forEach(o => o.draw())
       this.tortuga.draw()
 
     }
 
     move(){
-      //this.fp.move()
+      this.fp.move()
       this.tortuga.move()
-      this.objetos.forEach(o => o.move())
     }
 
     clear(){

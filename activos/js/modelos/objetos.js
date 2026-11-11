@@ -1,4 +1,4 @@
-class Objeto {
+/*class Objeto {
 
    constructor(ctx, sx, sy, sw, sh, x, y, vx = 0) {
     this.ctx = ctx
@@ -17,7 +17,7 @@ class Objeto {
   static cargarHoja() {
     if (!Objeto.hoja) {
       Objeto.hoja = new Image()
-      Objeto.hoja.src = '/activos/imagenes/fondos_/Leve_objets.png'
+      Objeto.hoja.src = '/activos/imagenes/fondo_pantalla/Leve_objets.png'
       Objeto.hoja.onload = () => { Objeto.hoja.isReady = true }
     }
     return Objeto.hoja
@@ -26,10 +26,10 @@ class Objeto {
   // Crea todos los objetos del nivel
   static crearTodos(ctx) {
     return [
-      new Objeto(ctx, 1186, 228, 414, 94, 1900, 215,-0.2),  // reja
-      new Objeto(ctx, 258, 228, 26, 48, 750, 350, ),    // hidrante
-      new Objeto(ctx, 258, 228, 26, 48, 1400, 310, ),   // otro hidrante
-      new Objeto(ctx, 255, 293, 71, 18, 750, 350,  ),   // otro hidrante
+      new Objeto(ctx, 1186, 228, 414, 94, 2000, 215, -VEL_BG),  // reja
+      new Objeto(ctx, 258, 228, 26, 48, 750, 350, - VEL_BG),    // hidrante
+      new Objeto(ctx, 258, 228, 26, 48, 1400, 310,-VEL_BG ), // otro hidrante
+      new Objeto(ctx, 255, 293, 71, 18, 770, 350,  ),   // otro hidrante
 
     ]
   }
@@ -46,8 +46,8 @@ class Objeto {
 
   move() {
   this.x -= this.vx                      // con vx = 0 no se mueve
-  if (this.x + this.sw < 0) {            // salió por la izquierda
-    this.x = this.ctx.canvas.width       // vuelve a entrar por la derecha
+  if (this.x + this.w < 0) {            // salió por la izquierda
+    this.x += this.w   //vuelve a entrar por la derecha
   }
 }
-  }
+  }*/

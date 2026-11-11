@@ -1,0 +1,23 @@
+{
+  "cellWidth": 64,
+  "cellHeight": 112,
+  "columns": 6,
+  "rows": {
+    "andar": {
+      "row": 0,
+      "frames": 6
+    },
+    "salto": {
+      "row": 1,
+      "frames": 4
+    },
+    "voltereta": {
+      "row": 2,
+      "frames": 6
+    },
+    "salto_katana": {
+      "row": 3,
+      "frames": 4
+    }
+  }
+}

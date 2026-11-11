@@ -13,12 +13,13 @@ class Tortuga {
         this.z = 0
         this.vz = 0
         this.isJumping = false 
+        this.isRunning =  false
         this.margenDerecho = MARGEN_DERECHO
         this.sprite = new Image()
         this.sprite.src = '/activos/imagenes/sprite_tortuga/sprite_leonardo.png'
         
         this.sprite.vFrames = 6 // numero de columnas
-        this.sprite.hFrames = 4 // numeros de filas
+        this.sprite.hFrames = 5 // numeros de filas
         this.sprite.vFrameIndex = 0
         this.sprite.hFrameIndex = 0
 
@@ -62,9 +63,10 @@ class Tortuga {
     }
 
     move (){
-        this.x += this.vx
+        let velocidad = TORTUGA_VX
+        if (this.isRunning){velocidad= TORTUGA_RUN}
+        this.x += Math.sign(this.vx) * velocidad
         this.y += this.vy
-        //this.vy += this.ay
 
         if(this.y + this.h > this.ground){ // limite del suelo
 
@@ -103,9 +105,8 @@ class Tortuga {
                 this.vz = 0
                 this.isJumping = false
             }
-             console.log('saltando:', this.isJumping, 'z:', this.z, 'vz:', this.vz)
         }
-
+        
         }
 
     onKeyEvent(event){
@@ -138,29 +139,44 @@ class Tortuga {
             if(isPressed && !event.repeat && !this.isJumping){
             this.vz =TORTUGA_SALTO
             this.isJumping =true
-          }
-          
+          }break
+          case KEY_D:this.isRunning= isPressed
+            break
           }   
     }  
        animate (){
-        if( this.isJumping){
-          this.sprite.hFrameIndex = 3
-          if (this.vz>5){this.sprite.vFrameIndex=0}
-          else if (this.vz>0){this.sprite.vFrameIndex =1}
-          else if (this.vz>-5){this.sprite.vFrameIndex =2}
-          else{this.sprite.vFrameIndex=3}
-        }
-        else if (this.vx !==0 || this.vy!==0){this.sprite.hFrameIndex=0
-          if (this.drawCount% 20 === 0){
-            this.drawCount=0
-            this.sprite.vFrameIndex= (this.sprite.vFrameIndex + 1)%4
-          }
-
-        }
-        else {
-          this.sprite.vFrameIndex = 0
-          this.sprite.hFrameIndex = 0
-        }
-       }
-
+    if (this.isJumping){
+      this.sprite.hFrameIndex = 3
+      if (this.vz > 5)        this.sprite.vFrameIndex = 0
+      else if (this.vz > 0)   this.sprite.vFrameIndex = 1
+      else if (this.vz > -5)  this.sprite.vFrameIndex = 2
+      else                    this.sprite.vFrameIndex = 3
+    }
+    //sprite corriendo
+    else if (this.vx >0 && this.isRunning){
+      this.animateFrame(0, 2, 4, 8)
+    }
+     else if (this.vx < 0 && this.isRunning){
+      this.animateFrame(0, 4, 4, 8)
+    }
+    //sprite andando hacia delante
+    else if (this.vx !== 0 || this.vy !== 0){
+      this.animateFrame(0, 0, 6, 20)    
+    }
+    else {
+      this.sprite.vFrameIndex = 0
+      this.sprite.hFrameIndex = 0
+    }
+}
+animateFrame(initialVFrame, initialHFrame, frames, frequency){
+    if (this.sprite.hFrameIndex !== initialHFrame){
+      this.sprite.vFrameIndex = initialVFrame
+      this.sprite.hFrameIndex = initialHFrame
+      this.drawCount = 0
+    }
+    else if (this.drawCount % frequency === 0){
+      this.drawCount = 0
+      this.sprite.vFrameIndex = (this.sprite.vFrameIndex + 1) % frames
+    }
+}
   }

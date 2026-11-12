@@ -180,5 +180,12 @@ animateFrame(initialVFrame, initialHFrame, frames, frequency){
       this.drawCount = 0
       this.sprite.vFrameIndex = (this.sprite.vFrameIndex + 1) % frames
     }
-}
   }
+collidesWith(element){
+  return (this.x+this.w*0.7>element.x) && 
+    (this.x+this.w*0.3<element.x+element.w*0.3) && 
+    (this.y-this.z+this.h>element.y) && 
+    (this.y-this.z+this.h*0.5<element.y+element.h)
+}
+
+}

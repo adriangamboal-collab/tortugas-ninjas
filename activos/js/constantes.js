@@ -23,9 +23,16 @@ const KEY_D = 68
 const PIZZA_SPRITE = "/activos/imagenes/Accesorios/piza.png"
 const PIZZA_W =32
 const PIZZA_H =32
-const PIZZA_POWER = 3
+const HEALT_INICIAL= 50
+const HEALT_MAX = 100
+const PIZZA_HEALT = 2
 const PIZZA_FREQ = 10
-const PIZZA_VX =  0
+const PIZZA_VX =  3
 //const PIZZA_VY = 1
 const PIZZA_MAX_GAME =4
+
+// constantes de los enemigos 
+
+
+
 

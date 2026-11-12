@@ -5,7 +5,7 @@ class Piza{
        w=PIZZA_W,
         h=PIZZA_H,
         src=PIZZA_SPRITE,
-        power=PIZZA_POWER,
+        healt=PIZZA_HEALT,
         frequency=PIZZA_FREQ
         ){
         this.ctx= ctx
@@ -15,7 +15,7 @@ class Piza{
         this.h = h
         this.vx = vx
         //this.vy = vy
-        this.power = power
+        this.healt = healt
         this.frequency= frequency
         this.src =src
         this.sprite = new Image()

@@ -7,8 +7,7 @@ class Game {
         this.fps = FPS
         this.drawIntervalId = null
         this.pizaTimeoutId = null
-        this.power= 0
-        this.healt_bar= 100
+        this.healt= HEALT_INICIAL
         this.ctx = this.canvas.getContext('2d')
         this.fp= new Fondos_Pantalla(this.ctx)
         this.tortuga =  new Tortuga (this.ctx,TORTUGA_W , TORTUGA_H  )
@@ -26,6 +25,8 @@ class Game {
         this.move()
         this.draw()
         this.generateElements()
+        this.checkBounds()
+        this.CheckColisions()
         },this.fps)
       }
     } 
@@ -34,6 +35,7 @@ class Game {
       this.fp.draw()
       this.tortuga.draw()
       this.piza.forEach(piza =>piza.draw())
+      this.drawHealt()
 
     }
 
@@ -68,16 +70,43 @@ class Game {
     }
 
     generateElements(){
-      if(this.pizaTimeoutId === null && this.piza.length<PIZZA_MAX_GAME){
+      if(this.pizaTimeoutId === null) {
+        //console.log(this.piza.length)
       this.pizaTimeoutId= setTimeout(()=> {
+        const randomY =Math.floor(Math.random()*167)
         this.piza.push(new Piza (this.ctx,
         this.canvas.width,
-        this.canvas.height-SUELO-PIZZA_H),
+        this.canvas.height-SUELO-PIZZA_H-randomY)
       )
       this.pizaTimeoutId = null
-      },3000)
+      },4000)
       }
-      
-      
     }
-}
+    checkBounds(){
+      this.piza = this.piza.filter(piza =>!(piza.x+piza.w<0))
+    }
+
+    CheckColisions(){
+      this.piza = this.piza.filter(piza=>{
+        if(this.tortuga.collidesWith(piza)){
+          this.healt = Math.min(HEALT_MAX,this.healt+PIZZA_HEALT)
+          return false
+        }
+        return true
+      })
+    }
+
+    drawHealt (){
+        this.ctx.font = "40px 'Bangers'"
+        this.ctx.lineWidth = 10
+        this.ctx.lineJoin = "round"
+        this.ctx.strokeStyle = "black"
+        this.ctx.strokeText(`Healt: ${this.healt}`, 50, 90)
+        this.ctx.fillStyle = "#f2ff3f"
+        this.ctx.fillText(`Healt: ${this.healt}`, 50, 90)
+    }
+    
+  }
+        
+      
+

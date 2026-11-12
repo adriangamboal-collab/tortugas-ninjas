@@ -1,3 +1,4 @@
+// constantes de pantalla y jugador
 const CANVAS_W= 2434
 const CANVAS_H= 402
 const FPS = 1000/60
@@ -18,6 +19,13 @@ const KEY_UP= 38
 const KEY_DOWN = 40
 const KEY_S = 83
 const KEY_D = 68
-
-
+// constante de accesorios 
+const PIZZA_SPRITE = "/activos/imagenes/Accesorios/piza.png"
+const PIZZA_W =32
+const PIZZA_H =32
+const PIZZA_POWER = 3
+const PIZZA_FREQ = 10
+const PIZZA_VX =  0
+//const PIZZA_VY = 1
+const PIZZA_MAX_GAME =4
 

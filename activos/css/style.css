@@ -12,7 +12,7 @@ body {
 
 }
 
-/*#canvas-container {
+canvas-container {
     height: 100%;
     overflow-x: auto;       
     overflow-y: hidden;
@@ -27,4 +27,4 @@ canvas {
     width: 3600px;         
     height: auto;          /
     image-rendering: pixelated;
-}*/
+}

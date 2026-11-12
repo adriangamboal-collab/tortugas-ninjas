@@ -15,11 +15,13 @@ class Tortuga {
         this.isJumping = false 
         this.isRunning =  false
         this.margenDerecho = MARGEN_DERECHO
+
+        
         this.sprite = new Image()
         this.sprite.src = '/activos/imagenes/sprite_tortuga/sprite_leonardo.png'
         
         this.sprite.vFrames = 6 // numero de columnas
-        this.sprite.hFrames = 5 // numeros de filas
+        this.sprite.hFrames = 9 // numeros de filas
         this.sprite.vFrameIndex = 0
         this.sprite.hFrameIndex = 0
 

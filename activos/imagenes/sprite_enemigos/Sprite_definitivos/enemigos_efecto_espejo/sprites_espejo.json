@@ -1,0 +1,106 @@
+{
+ "soldado_azul": {
+  "celda": [
+   96,
+   96
+  ],
+  "columnas": 6,
+  "filas_originales": 2,
+  "filas_con_espejo": 4,
+  "ancla_x_normal": null,
+  "ancla_x_espejo": null,
+  "archivo_espejo": "soldado_azul_espejo.png",
+  "archivo_doble": "soldado_azul_normal_y_espejo.png"
+ },
+ "arquero_verde": {
+  "celda": [
+   93,
+   85
+  ],
+  "columnas": 13,
+  "filas_originales": 1,
+  "filas_con_espejo": 2,
+  "ancla_x_normal": 68,
+  "ancla_x_espejo": 25,
+  "archivo_espejo": "arquero_verde_espejo.png",
+  "archivo_doble": "arquero_verde_normal_y_espejo.png"
+ },
+ "ninja_naranja": {
+  "celda": [
+   190,
+   88
+  ],
+  "columnas": 13,
+  "filas_originales": 2,
+  "filas_con_espejo": 4,
+  "ancla_x_normal": 150,
+  "ancla_x_espejo": 40,
+  "archivo_espejo": "ninja_naranja_espejo.png",
+  "archivo_doble": "ninja_naranja_normal_y_espejo.png"
+ },
+ "ninja_blanco": {
+  "celda": [
+   115,
+   102
+  ],
+  "columnas": 8,
+  "filas_originales": 1,
+  "filas_con_espejo": 2,
+  "ancla_x_normal": 66,
+  "ancla_x_espejo": 49,
+  "archivo_espejo": "ninja_blanco_espejo.png",
+  "archivo_doble": "ninja_blanco_normal_y_espejo.png"
+ },
+ "ninja_amarillo": {
+  "celda": [
+   78,
+   69
+  ],
+  "columnas": 5,
+  "filas_originales": 1,
+  "filas_con_espejo": 2,
+  "ancla_x_normal": 49,
+  "ancla_x_espejo": 29,
+  "archivo_espejo": "ninja_amarillo_espejo.png",
+  "archivo_doble": "ninja_amarillo_normal_y_espejo.png"
+ },
+ "helicoptero_neon": {
+  "celda": [
+   112,
+   76
+  ],
+  "columnas": 5,
+  "filas_originales": 1,
+  "filas_con_espejo": 2,
+  "ancla_x_normal": null,
+  "ancla_x_espejo": null,
+  "archivo_espejo": "helicoptero_neon_espejo.png",
+  "archivo_doble": "helicoptero_neon_normal_y_espejo.png"
+ },
+ "rocksteady": {
+  "celda": [
+   161,
+   128
+  ],
+  "columnas": 11,
+  "filas_originales": 1,
+  "filas_con_espejo": 2,
+  "ancla_x_normal": 71,
+  "ancla_x_espejo": 90,
+  "archivo_espejo": "rocksteady_espejo.png",
+  "archivo_doble": "rocksteady_normal_y_espejo.png"
+ },
+ "shredder": {
+  "celda": [
+   143,
+   113
+  ],
+  "columnas": 6,
+  "filas_originales": 4,
+  "filas_con_espejo": 8,
+  "ancla_x_normal": 56,
+  "ancla_x_espejo": 87,
+  "archivo_espejo": "shredder_espejo.png",
+  "archivo_doble": "shredder_normal_y_espejo.png"
+ }
+}

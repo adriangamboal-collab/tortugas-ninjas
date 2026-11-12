@@ -6,14 +6,18 @@ class Game {
 
         this.fps = FPS
         this.drawIntervalId = null
-        this.pizaTimeoutId = null
+        
         this.healt= HEALT_INICIAL
         this.ctx = this.canvas.getContext('2d')
         this.fp= new Fondos_Pantalla(this.ctx)
         this.tortuga =  new Tortuga (this.ctx,TORTUGA_W , TORTUGA_H  )
         this.tortuga.groundTo(this.canvas.height-SUELO)
         this.tortuga.limiteDerechoTo(this.canvas.width-MARGEN_DERECHO)
+
         this.piza = []
+        this.pizaTimeoutId = null
+        this.enemies= [ ]
+        this.enemiesTimeoutId = null
     }
 
 
@@ -35,6 +39,7 @@ class Game {
       this.fp.draw()
       this.tortuga.draw()
       this.piza.forEach(piza =>piza.draw())
+      this.enemies.forEach(enemigo =>enemigo.draw())
       this.drawHealt()
 
     }
@@ -43,6 +48,8 @@ class Game {
       this.fp.move()
       this.tortuga.move()
       this.piza.forEach(piza =>piza.move())
+      this.enemies.forEach(enemigo =>enemigo.move())
+
     }
 
     clear(){
@@ -71,7 +78,6 @@ class Game {
 
     generateElements(){
       if(this.pizaTimeoutId === null) {
-        //console.log(this.piza.length)
       this.pizaTimeoutId= setTimeout(()=> {
         const randomY =Math.floor(Math.random()*167)
         this.piza.push(new Piza (this.ctx,
@@ -80,6 +86,27 @@ class Game {
       )
       this.pizaTimeoutId = null
       },4000)
+      }
+
+      if(this.enemiesTimeoutId === null) {
+      this.enemiesTimeoutId= setTimeout(()=> {
+        const randomY =Math.floor(Math.random()*167)
+        this.enemies.push(new Enemigos(
+            this.ctx,
+            this.canvas.width,
+            this.canvas.height-NINJA_BlUE_H-randomY,
+            NINJA_BLUE_W,
+            NINJA_BlUE_H,
+            NINJA_BLUE_SPRITE,
+            NINJA_BLUE_SPRITE_VFRAMES,
+            NINJA_BLUE_SPRITE_HFRAMES,
+            NINJA_BLUE_DAMAGE,
+            ENEMY_VX)
+      )
+      this.enemiesTimeoutId =null
+    },3000
+  )
+      
       }
     }
     checkBounds(){
@@ -94,16 +121,24 @@ class Game {
         }
         return true
       })
-    }
-
+    
+       this.enemies = this.enemies.filter(enemigos=>{
+        if(this.tortuga.collidesWith(enemigos)){
+          this.healt = Math.min(HEALT_MAX,this.healt-NINJA_BLUE_DAMAGE)
+          return false
+        }
+        return true
+          })
+        }
+  
     drawHealt (){
         this.ctx.font = "40px 'Bangers'"
         this.ctx.lineWidth = 10
         this.ctx.lineJoin = "round"
         this.ctx.strokeStyle = "black"
-        this.ctx.strokeText(`Healt: ${this.healt}`, 50, 90)
+        this.ctx.strokeText(`Healt: ${this.healt}`, 10, 40)
         this.ctx.fillStyle = "#f2ff3f"
-        this.ctx.fillText(`Healt: ${this.healt}`, 50, 90)
+        this.ctx.fillText(`Healt: ${this.healt}`, 10, 40)
     }
     
   }

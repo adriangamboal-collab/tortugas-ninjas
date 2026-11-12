@@ -29,7 +29,7 @@ class Tortuga {
           this.sprite.frameW = Math.floor(this.sprite.width/this.sprite.vFrames)
           this.sprite.frameH = Math.floor(this.sprite.height/this.sprite.hFrames)
         }
-        this.drawCount = 4
+        this.drawCount = 0
     }
     groundTo(groundY){
       this.y = groundY -this.h

@@ -2,7 +2,7 @@ class Piza{
     constructor(ctx,x,y,
         vx=-PIZZA_VX,
        // vy=PIZZA_VY,
-       w=PIZZA_W,
+        w=PIZZA_W,
         h=PIZZA_H,
         src=PIZZA_SPRITE,
         healt=PIZZA_HEALT,

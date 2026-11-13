@@ -18,6 +18,8 @@ class Game {
         this.pizaTimeoutId = null
         this.enemies= [ ]
         this.enemiesTimeoutId = null
+        this.score =0
+        this.invulnerable = 0
     }
 
 
@@ -94,9 +96,9 @@ class Game {
         this.enemies.push(new Enemigos(
             this.ctx,
             this.canvas.width,
-            this.canvas.height-NINJA_BlUE_H-randomY,
+            this.canvas.height-NINJA_BLUE_H-randomY,
             NINJA_BLUE_W,
-            NINJA_BlUE_H,
+            NINJA_BLUE_H,
             NINJA_BLUE_SPRITE,
             NINJA_BLUE_SPRITE_VFRAMES,
             NINJA_BLUE_SPRITE_HFRAMES,

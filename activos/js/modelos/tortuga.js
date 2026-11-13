@@ -61,10 +61,17 @@ class Tortuga {
       }
     this.animate()
     this.drawCount++
+    // SOLO PARA PROBAR: borrar después
+// SOLO PARA PROBAR: borrar después
+const b = this.hitbox()
+this.ctx.strokeStyle = 'yellow'
+this.ctx.lineWidth = 2
+this.ctx.strokeRect(b.x, b.y, b.w, b.h)
       
     }
 
     move (){
+ // console.log('y:', this.y, 'vy:', this.vy, 'suelo:', this.ground, 'tope:', this.limiteSuperior)
         let velocidad = TORTUGA_VX
         if (this.isRunning){velocidad= TORTUGA_RUN}
         this.x += Math.sign(this.vx) * velocidad
@@ -181,11 +188,20 @@ animateFrame(initialVFrame, initialHFrame, frames, frequency){
       this.sprite.vFrameIndex = (this.sprite.vFrameIndex + 1) % frames
     }
   }
+  
+  hitbox() {
+  return {
+    x: this.x + this.w * 0.18,   // vacío de la izquierda: 33 % del ancho
+    y: this.y-this.z+ this.h*0.4,
+    w: this.w * 0.7,            // cuerpo: 34 % del ancho
+    h: this.h*0.6
+  }
+}
 collidesWith(element){
-  return (this.x+this.w*0.7>element.x) && 
-    (this.x+this.w*0.3<element.x+element.w*0.3) && 
-    (this.y-this.z+this.h>element.y) && 
-    (this.y-this.z+this.h*0.5<element.y+element.h)
+  const a = this.hitbox()      // caja de Leonardo
+  const b = element.hitbox()   // caja del ninja o de la pizza
+  return a.x < b.x + b.w && a.x + a.w > b.x &&
+         a.y < b.y + b.h && a.y + a.h > b.y
 }
 
 }

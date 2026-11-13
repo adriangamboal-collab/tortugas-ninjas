@@ -24,6 +24,7 @@ class Piza{
             this.sprite.isReady = true
         }
         this.drawCount = 0
+        
     }
     draw(){
     if (this.sprite.isReady){
@@ -31,6 +32,11 @@ class Piza{
     this.animate()
     this.drawCount++
 }
+
+const b = this.hitbox()
+this.ctx.strokeStyle = 'blue'
+this.ctx.lineWidth = 2
+this.ctx.strokeRect(b.x, b.y, b.w, b.h)
     }
     move(){
       this.x += this.vx
@@ -39,4 +45,7 @@ class Piza{
     animate (){
 
     }
+    hitbox() {
+  return { x: this.x, y: this.y, w: this.w, h: this.h }
+}
 }

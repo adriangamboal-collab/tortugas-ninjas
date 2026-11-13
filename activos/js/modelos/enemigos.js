@@ -1,4 +1,5 @@
 class Enemigos {
+    // construir el personaje 
     constructor(ctx,x,y,w,h,src,vFrames,hFrames,score,damage){
         this.ctx = ctx
         this.x = x
@@ -9,9 +10,11 @@ class Enemigos {
     
         this.score = score
         this.damage = damage
+        this.saltado = false
+
+        //cargar el sprite 
         this.sprite = new Image()
         this.sprite.src = src
-        
         this.sprite.vFrames = vFrames // numero de columnas
         this.sprite.hFrames = hFrames // numeros de filas
         this.sprite.vFrameIndex = 0
@@ -22,6 +25,9 @@ class Enemigos {
           this.sprite.frameH = Math.floor(this.sprite.height/this.sprite.hFrames)
     }
     this.drawcount = 0
+
+// dibujar el personaje 
+
 }
 draw (){   
         if(this.sprite.isReady){
@@ -39,6 +45,12 @@ draw (){
 }
         this.animate()
         this.drawcount++
+
+        // SOLO PARA PROBAR: borrar después
+const b = this.hitbox()
+this.ctx.strokeStyle = 'red'
+this.ctx.lineWidth = 2
+this.ctx.strokeRect(b.x, b.y, b.w, b.h)
 }
 move(){
     this.x +=this.vx
@@ -49,7 +61,18 @@ if(this.drawcount >= ENEMY_SPRITE_FREQ){
     this.sprite.vFrameIndex =(this.sprite.vFrameIndex+1)% this.sprite.vFrames
 }
 }
+hitbox() {
+  return {
+    x: this.x + this.w *0.35,//*largo
+    y: this.y+this.h*0.3,//alto
+    w: this.w * 0.4,            // mide el 34 % del ancho
+    h: this.h*0.7
+  }
 }
+
+}
+
+
         
 
     

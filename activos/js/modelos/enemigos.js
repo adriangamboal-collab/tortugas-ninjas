@@ -46,14 +46,10 @@ draw (){
         this.animate()
         this.drawcount++
 
-        // SOLO PARA PROBAR: borrar después
-const b = this.hitbox()
-this.ctx.strokeStyle = 'red'
-this.ctx.lineWidth = 2
-this.ctx.strokeRect(b.x, b.y, b.w, b.h)
 }
 move(){
     this.x +=this.vx
+    
 }
 animate(){
 if(this.drawcount >= ENEMY_SPRITE_FREQ){

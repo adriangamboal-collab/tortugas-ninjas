@@ -33,14 +33,10 @@ class Piza{
     this.drawCount++
 }
 
-const b = this.hitbox()
-this.ctx.strokeStyle = 'blue'
-this.ctx.lineWidth = 2
-this.ctx.strokeRect(b.x, b.y, b.w, b.h)
     }
     move(){
       this.x += this.vx
-     // this.y += this.vy
+    
     }
     animate (){
 

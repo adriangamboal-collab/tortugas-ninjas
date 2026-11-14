@@ -157,7 +157,9 @@ class Game {
         return true
       })
 
-      if (this.healt <= 0) this.stop()                              // NUEVO
+      if (this.healt <= 0) {this.stop()
+        document.getElementById('puntuacion-final').textContent = `Score: ${this.score}`
+        document.getElementById('gameover').hidden = false}                              // NUEVO
     }
 
     drawHealt(){

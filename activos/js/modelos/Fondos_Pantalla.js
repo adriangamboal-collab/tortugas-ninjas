@@ -6,7 +6,7 @@ class Fondos_Pantalla{
     this.w = this.ctx.canvas.width
     this.h = this.ctx.canvas.height
     this.image = new Image()
-    this.image.src = '/activos/imagenes/fondo_pantalla/level_bg.png'
+    this.image.src = './activos/imagenes/fondo_pantalla/level_bg.png'
     this.image.onload = ()=> {this.image.isReady = true}
     this.vx = VEL_BG
     }

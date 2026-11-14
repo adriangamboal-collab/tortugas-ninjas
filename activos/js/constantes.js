@@ -20,7 +20,7 @@ const KEY_DOWN = 40
 const KEY_S = 83
 const KEY_D = 68
 // constante de accesorios 
-const PIZZA_SPRITE = "/activos/imagenes/Accesorios/piza.png"
+const PIZZA_SPRITE = "./activos/imagenes/Accesorios/piza.png"
 const PIZZA_W =32
 const PIZZA_H =32
 const HEALT_INICIAL= 50
@@ -36,7 +36,7 @@ const NINJA_BLUE_W =96*1.4
 const NINJA_BLUE_H =96*1.4
 const ENEMY_SPRITE_FREQ = 22
 const NINJA_BLUE_DAMAGE = 10
-const NINJA_BLUE_SPRITE = '/activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_azul_normal_y_espejo.png'
+const NINJA_BLUE_SPRITE = './activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_azul_normal_y_espejo.png'
 const NINJA_BLUE_SPRITE_VFRAMES = 6
 const NINJA_BLUE_SPRITE_HFRAMES = 4
 const NINJA_BLUE_SCORE = 5

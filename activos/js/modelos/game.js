@@ -90,10 +90,10 @@ class Game {
       if (this.enemiesTimeoutId === null) {
         let tiempo = 3000
         let Up_vx = 0
-        if(this.score>=20)  {tiempo= 2500,Up_vx= 0.5}
+        if(this.score>=20)  {tiempo= 3000,Up_vx= 0.5}
         if(this.score>=60)  {tiempo= 2500,Up_vx= 1}
-        if(this.score>=100) {tiempo= 2500,Up_vx= 1.5}
-        if(this.score>=150) {tiempo= 2500,Up_vx= 2}
+        if(this.score>=100) {tiempo= 2000,Up_vx= 1.5}
+        if(this.score>=150) {tiempo= 1500,Up_vx= 2}
 
         this.enemiesTimeoutId = setTimeout(() => {
           const randomY = Math.floor(Math.random() * 167)

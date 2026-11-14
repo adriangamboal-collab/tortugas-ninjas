@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tortugas-Ninjas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="activos/css/style.css">
 </head>
 <body>
   <div id="canvas-container">
     <canvas id="proyecto"></canvas>
+    <!--CREO PANTALLA INICIAL-->
+    <div id="menu" class="=pantalla_inicial">
+      <img src="./activos/imagenes/pantalla/inicio.png" alt="Tortugas Ninja" class="titulo">
+      <button id="btn-jugar">PUSH START</button>
+      <!--CREO PANTALLA INICIAL-->
+      <div id="gameover" class="GAME OVER" hidden>
+      <img src="./activos/imagenes/pantalla/final.png" alt="Game Over" class="titulo">
+      <p id="puntuacion_final"> Score:0</p>
+      <button id="btn-reiniciar">PUSH START</button>
   </div>
-    <script src="activos/js/constantes.js"></script>
-    <script src ="activos/js/modelos/enemigos.js"></script>
-    <script src="activos/js/modelos/piza.js"></script>
-    <script src="activos/js/modelos/Fondos_Pantalla.js"></script>
-    <script src="activos/js/modelos/tortuga.js"></script>
-    <script src ="activos/js/modelos/game.js"></script>
-    <script src="activos/js/index.js"></script>
+    <script src="./activos/js/constantes.js"></script>
+    <script src ="./activos/js/modelos/enemigos.js"></script>
+    <script src="./activos/js/modelos/piza.js"></script>
+    <script src="./activos/js/modelos/Fondos_Pantalla.js"></script>
+    <script src="./activos/js/modelos/tortuga.js"></script>
+    <script src ="./activos/js/modelos/game.js"></script>
+    <script src="./activos/js/index.js"></script>
 </body>
 </html>

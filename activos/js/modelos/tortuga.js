@@ -30,6 +30,14 @@ class Tortuga {
       this.sprite.frameH = Math.floor(this.sprite.height / this.sprite.hFrames);
     };
     this.drawCount = 0;
+    this.audioJump = new Audio('./activos/musica/sonidos/salto_2.wav')
+    this.audioJump.volumen =0.9
+    this.audioSteep= new Audio ('./activos/musica/sonidos/pasos.wav') 
+    this.audioSteep.volume = 0.9
+    this.audioSprint= new Audio ('./activos/musica/sonidos/sprint.wav')
+    this.audioSprint.volume =0.8
+    
+
   }
   groundTo(groundY) {
     this.y = groundY - this.h;
@@ -117,6 +125,7 @@ class Tortuga {
     switch (event.keyCode) {
       case KEY_RIGHT:
         if (isPressed) {
+          this.audioSteep.play()
           this.vx = TORTUGA_VX;
         } else {
           this.vx = 0;
@@ -124,6 +133,7 @@ class Tortuga {
         break;
       case KEY_LEFT:
         if (isPressed) {
+          this.audioSteep.play()
           this.vx = -TORTUGA_VX;
         } else {
           this.vx = 0;
@@ -131,6 +141,7 @@ class Tortuga {
         break;
       case KEY_UP:
         if (isPressed) {
+          this.audioSteep.play()
           this.vy = -TORTUGA_VY;
         } else {
           this.vy = 0;
@@ -138,6 +149,7 @@ class Tortuga {
         break;
       case KEY_DOWN:
         if (isPressed) {
+          this.audioSteep.play()
           this.vy = TORTUGA_VY;
         } else {
           this.vy = 0;
@@ -145,12 +157,14 @@ class Tortuga {
         break;
       case KEY_S:
         if (isPressed && !event.repeat && !this.isJumping) {
+          this.audioJump.play()
           this.vz = TORTUGA_SALTO;
           this.isJumping = true;
         }
         break;
       case KEY_D:
         this.isRunning = isPressed;
+        this.audioSprint.play()
         break;
     }
   }

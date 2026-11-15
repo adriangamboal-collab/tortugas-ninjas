@@ -1,30 +1,73 @@
 body {
-   body {
-    margin: 0;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;   /* centra en horizontal */
-    align-items: center;       /* centra en vertical */
-    background: #000;          /* color de las franjas alrededor */
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;   /* centra en horizontal */
+  align-items: center;       /* centra en vertical */
+  background: #000;          /* color de las franjas alrededor */
 }
 
-}
-
-canvas-container {
-    height: 100%;
-    overflow-x: auto;       
-    overflow-y: hidden;
-    display: flex;
-    align-items: center;   
+#canvas-container {
+  position: relative;        /* los paneles se colocan respecto a este contenedor */
+  width: 100%;
+  max-width: 1800px;
 }
 
 canvas {
-    border: 1px solid black;
-    flex-shrink: 0;   
-    margin: 0 auto;     
-    width: 3600px;         
-    height: auto;          /
-    image-rendering: pixelated;
+  display: block;
+  width: 100%;               /* se adapta al ancho de la ventana */
+  height: auto;
+  border: 1px solid hsl(126, 94%, 50%);
+  image-rendering: pixelated;
+}
+
+/* ---------- Pantallas de inicio y final ---------- */
+.pantalla {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #000;
+  color: lab(79.16% -64.65 29.67);
+}
+.pantalla[hidden] { display: none; }
+
+.pantalla .titulo {
+  height: 48%;               /* proporcional al panel, así cabe en cualquier tamaño */
+  image-rendering: pixelated;
+}
+
+#btn-jugar{
+  font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: #94f41e;
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  animation: parpadeo 1s steps(1) infinite;
+}
+#btn-reiniciar{
+font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: #94f41e;
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  animation: parpadeo 1s steps(1) infinite;
+}
+ 
+#btn-jugar:hover, #btn-reiniciar:hover { color: #4cff3f; animation: none; }
+@keyframes parpadeo { 50% { opacity: 0; } }
+
+#puntuacion-final {
+  font-family:'Bangers', monospace;
+  font-size: 18px;
+  margin: 0;
 }

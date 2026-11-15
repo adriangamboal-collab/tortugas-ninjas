@@ -20,10 +20,24 @@ class Game {
         this.enemiesTimeoutId = null
         this.score = 0
         this.invulnerable = 0
+        this.audioGame= new Audio('./activos/musica/musica_pantallas/musicaJuego.ogg')
+        this.audioGame.volume =0.05
+        this.audioGame.loop = true
+        this.audioGame.onload = ()=>{}
+        this.audioEnemigo = new Audio('./activos/musica/sonidos/daño.mp3')
+        this.audioEnemigo.volume=0.9
+        this.audioPizza = new Audio('./activos/musica/sonidos/choque_pizza.mp3')
+        this.audioPizza.volume =0.8
+        this.audioScore = new Audio('activos/musica/sonidos/colision_enemigo.wav')
+        this.audioScore.volume =0.8
+        
+        
+
     }
 
     start(){
       if (this.drawIntervalId === null) {
+        this.audioGame.play()
         this.setupListeners()
         this.drawIntervalId = setInterval(() => {
           this.clear()
@@ -128,6 +142,7 @@ class Game {
       // PIZZAS: se cogen al tocarlas (sin cambios)
       this.piza = this.piza.filter(piza => {
         if (this.tortuga.collidesWith(piza)) {
+          this.audioPizza.play()
           this.healt = Math.min(HEALT_MAX, this.healt + PIZZA_HEALT)
           return false
         }
@@ -143,12 +158,14 @@ class Game {
    
   }
         if (resultado === 'golpe' && this.invulnerable === 0) {
+          this.audioEnemigo.play()
           this.healt = Math.max(0, this.healt - e.damage)
           this.invulnerable = 60
           return false
         }
 
         if (resultado === 'salto' && !e.saltado) {
+          this.audioScore.play()
           e.saltado = true
           this.score += e.score
                   return false

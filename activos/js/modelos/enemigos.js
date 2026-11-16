@@ -1,11 +1,12 @@
 class Enemigos {
     // construir el personaje 
-    constructor(ctx,x,y,w,h,src,vFrames,hFrames,score,damage){
+    constructor(ctx,x,y,w,h,src,vFrames,hFrames,score,damage,frames=vFrames){
         this.ctx = ctx
         this.x = x
         this.y= y
         this.w=w
         this.h= h
+        this.frames = frames
         this.vx= -ENEMY_VX
     
         this.score = score
@@ -54,7 +55,7 @@ move(){
 animate(){
 if(this.drawcount >= ENEMY_SPRITE_FREQ){
     this.drawcount =0
-    this.sprite.vFrameIndex =(this.sprite.vFrameIndex+1)% this.sprite.vFrames
+    this.sprite.vFrameIndex =(this.sprite.vFrameIndex+1)% this.frames
 }
 }
         hitbox() {

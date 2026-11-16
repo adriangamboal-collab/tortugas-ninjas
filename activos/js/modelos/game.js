@@ -29,6 +29,8 @@ class Game {
         this.audioPizza.volume =1
         this.audioScore = new Audio('./activos/musica/sonidos/colision_enemigo.wav')
         this.audioScore.volume =1
+        this.audioGameOver = new Audio ('./activos/musica/sonidos/Game_over.mp3')
+        this.audioGameOver.volume=1
       
       
 
@@ -79,6 +81,8 @@ class Game {
     stop(){
       clearInterval(this.drawIntervalId)
       this.drawIntervalId = null
+      this.audioGame.pause()
+      this.audioGame.currentTime=0
     }
 
     setupListeners(){
@@ -109,25 +113,30 @@ class Game {
       if (this.enemiesTimeoutId === null) {
         let tiempo = 3000
         let Up_vx = 0
-        if(this.score>=20)  {tiempo= 3000,Up_vx= 0.5}
-        if(this.score>=60)  {tiempo= 2500,Up_vx= 1}
-        if(this.score>=100) {tiempo= 2000,Up_vx= 1.5}
-        if(this.score>=150) {tiempo= 1500,Up_vx= 2}
+        let N = 1
+        if(this.score>=20)  {tiempo= 3000,Up_vx= 0.5,N=2}
+        if(this.score>=60)  {tiempo= 2500,Up_vx= 1,N=3}
+        if(this.score>=100) {tiempo= 2000,Up_vx= 1.5,N=4}
+        if(this.score>=150) {tiempo= 1500,Up_vx= 2,N=4}
 
         this.enemiesTimeoutId = setTimeout(() => {
+          const ninja = NINJAS[Math.floor(Math.random()*N)]
           const randomY = Math.floor(Math.random() * 167)
           this.enemies.push(new Enemigos(
             this.ctx,
             this.canvas.width,
-            this.canvas.height - SUELO - NINJA_BLUE_H - randomY,   // CAMBIO: añadido "- SUELO"
-            NINJA_BLUE_W,
-            NINJA_BLUE_H,
-            NINJA_BLUE_SPRITE,
-            NINJA_BLUE_SPRITE_VFRAMES,
-            NINJA_BLUE_SPRITE_HFRAMES,
-            NINJA_BLUE_SCORE,                                       // CAMBIO: antes pasabas DAMAGE aquí
-            NINJA_BLUE_DAMAGE)                                      // CAMBIO: antes pasabas ENEMY_VX aquí
-          )
+            this.canvas.height - SUELO - ninja.h - randomY,   // CAMBIO: añadido "- SUELO"
+            ninja.w,
+            ninja.h,
+            ninja.sprite,
+            ninja.vFrames,
+            ninja.hFrames,
+            ninja.score,
+            ninja.damage,
+            ninja.frames 
+           ))
+
+            // CAMBIO: antes pasabas ENEMY_VX aq)
           this.enemies[this.enemies.length-1].vx = -(ENEMY_VX + Up_vx)
           this.enemiesTimeoutId = null
         },tiempo)
@@ -175,6 +184,7 @@ class Game {
 
       if (this.healt <= 0) {
         this.stop()
+        this.sonar(this.audioGameOver)
         document.getElementById('puntuacion-final').textContent = `Score: ${this.score}`
         document.getElementById('gameover').hidden = false
       }

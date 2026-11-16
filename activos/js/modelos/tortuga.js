@@ -31,7 +31,7 @@ class Tortuga {
     };
     this.drawCount = 0;
     this.audioJump = new Audio('./activos/musica/sonidos/salto_2.wav')
-    this.audioJump.volumen =0.9
+    this.audioJump.volume =0.9
     this.audioSteep= new Audio ('./activos/musica/sonidos/pasos.wav') 
     this.audioSteep.volume = 0.9
     this.audioSprint= new Audio ('./activos/musica/sonidos/sprint.wav')
@@ -157,14 +157,16 @@ class Tortuga {
         break;
       case KEY_S:
         if (isPressed && !event.repeat && !this.isJumping) {
-          this.audioJump.play()
           this.vz = TORTUGA_SALTO;
+          
           this.isJumping = true;
+          this.audioJump.play()
+          
         }
         break;
       case KEY_D:
-        this.isRunning = isPressed;
         this.audioSprint.play()
+        this.isRunning = isPressed;
         break;
     }
   }

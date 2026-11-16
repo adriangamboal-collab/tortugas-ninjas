@@ -35,11 +35,25 @@ const ENEMY_VX = 3
 const NINJA_BLUE_W =96*1.4
 const NINJA_BLUE_H =96*1.4
 const ENEMY_SPRITE_FREQ = 22
-const NINJA_BLUE_DAMAGE = 10
+const NINJA_BLUE_DAMAGE = 20
 const NINJA_BLUE_SPRITE = './activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_azul_normal_y_espejo.png'
 const NINJA_BLUE_SPRITE_VFRAMES = 6
 const NINJA_BLUE_SPRITE_HFRAMES = 4
-const NINJA_BLUE_SCORE = 5
+const NINJA_BLUE_SCORE = 10
+//añado diferentes enemigos
+const NINJA_WHITE_DAMAGE = 15
+const NINJA_WHITE_SPRITE = './activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_blanco_normal_y_espejo.png'
+const NINJA_WHITE_SCORE = 7.5
+
+const NINJA_YELLOW_DAMAGE = 5
+const NINJA_YELLOW_SPRITE = './activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_amarillo_normal_y_espejo.png'
+const NINJA_YELLOW_SCORE = 2.5
+
+const NINJA_RED_DAMAGE = 10
+const NINJA_RED_SPRITE = './activos/imagenes/sprite_enemigos/Sprite_definitivos/enemigos_efecto_espejo/soldado_rojo_normal_y_espejo.png'
+const NINJA_RED_SCORE = 5
+
+
 
 
 

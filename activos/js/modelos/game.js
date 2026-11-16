@@ -19,21 +19,26 @@ class Game {
         this.enemies = []
         this.enemiesTimeoutId = null
         this.score = 0
-        this.invulnerable = 0
         this.audioGame= new Audio('./activos/musica/musica_pantallas/musicaJuego.ogg')
-        this.audioGame.volume =0.05
+        this.audioGame.volume =0.1
         this.audioGame.loop = true
         this.audioGame.onload = ()=>{}
         this.audioEnemigo = new Audio('./activos/musica/sonidos/daño.mp3')
-        this.audioEnemigo.volume=0.9
+        this.audioEnemigo.volume=1
         this.audioPizza = new Audio('./activos/musica/sonidos/choque_pizza.mp3')
-        this.audioPizza.volume =0.8
-        this.audioScore = new Audio('activos/musica/sonidos/colision_enemigo.wav')
-        this.audioScore.volume =0.8
-        
-        
+        this.audioPizza.volume =1
+        this.audioScore = new Audio('./activos/musica/sonidos/colision_enemigo.wav')
+        this.audioScore.volume =1
+      
+      
 
     }
+      sonar(audio){
+          audio.currentTime =0
+          audio.play().catch(()=>{})
+        }
+        
+        
 
     start(){
       if (this.drawIntervalId === null) {
@@ -142,7 +147,7 @@ class Game {
       // PIZZAS: se cogen al tocarlas (sin cambios)
       this.piza = this.piza.filter(piza => {
         if (this.tortuga.collidesWith(piza)) {
-          this.audioPizza.play()
+          this.sonar(this.audioPizza)
           this.healt = Math.min(HEALT_MAX, this.healt + PIZZA_HEALT)
           return false
         }
@@ -150,7 +155,34 @@ class Game {
       })
 
       // ENEMIGOS: dependen del carril y del salto           // CAMBIO: todo el bloque
-      this.enemies = this.enemies.filter(e => {
+        this.enemies = this.enemies.filter(e => {
+        const resultado = this.tortuga.choque(e)
+
+        if (resultado === 'golpe') {
+          this.sonar(this.audioEnemigo)
+          this.healt = Math.max(0, this.healt - e.damage)
+          return false
+        }
+
+        if (resultado === 'salto') {
+          this.sonar(this.audioScore)
+          this.score += e.score
+          return false
+        }
+
+        return true
+      })
+
+      if (this.healt <= 0) {
+        this.stop()
+        document.getElementById('puntuacion-final').textContent = `Score: ${this.score}`
+        document.getElementById('gameover').hidden = false
+      }
+
+  
+
+
+      /*this.enemies = this.enemies.filter(e => {
         const resultado = this.tortuga.choque(e)
 
          if (resultado !== null && e.ultimoLog !== resultado) {
@@ -158,14 +190,14 @@ class Game {
    
   }
         if (resultado === 'golpe' && this.invulnerable === 0) {
-          this.audioEnemigo.play()
+          this.sonar(this.audioEnemigo)
           this.healt = Math.max(0, this.healt - e.damage)
           this.invulnerable = 60
           return false
         }
 
         if (resultado === 'salto' && !e.saltado) {
-          this.audioScore.play()
+          this.sonar(this.audioScore)
           e.saltado = true
           this.score += e.score
                   return false
@@ -176,8 +208,12 @@ class Game {
 
       if (this.healt <= 0) {this.stop()
         document.getElementById('puntuacion-final').textContent = `Score: ${this.score}`
-        document.getElementById('gameover').hidden = false}                              // NUEVO
+        document.getElementById('gameover').hidden = false}  */                            // NUEVO
+  
+
+
     }
+
 
     drawHealt(){
       this.ctx.font = "40px 'Bangers'"
@@ -198,6 +234,6 @@ class Game {
       this.ctx.fillStyle = "#f2ff3f"
       this.ctx.fillText(`Score: ${this.score}`, 260, 40)
     }
-}
-      
+  
+  }
 

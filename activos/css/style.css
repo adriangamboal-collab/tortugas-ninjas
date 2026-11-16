@@ -62,6 +62,26 @@ font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Nar
   cursor: pointer;
   animation: parpadeo 1s steps(1) infinite;
 }
+.controles {
+  display: flex;
+  gap: 32px;
+  margin: 10px 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: #fff;
+}
+
+.controles .tecla {
+  display: inline-block;
+  min-width: 22px;
+  margin-right: 4px;
+  padding: 4px 6px;
+  border: 2px solid #f2ff3f;
+  border-radius: 4px;
+  background: #111;
+  color: #f2ff3f;
+  text-align: center;
+}
  
 #btn-jugar:hover, #btn-reiniciar:hover { color: #4cff3f; animation: none; }
 @keyframes parpadeo { 50% { opacity: 0; } }

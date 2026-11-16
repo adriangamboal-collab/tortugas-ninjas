@@ -57,14 +57,14 @@ if(this.drawcount >= ENEMY_SPRITE_FREQ){
     this.sprite.vFrameIndex =(this.sprite.vFrameIndex+1)% this.sprite.vFrames
 }
 }
-hitbox() {
-  return {
-    x: this.x + this.w *0.35,//*largo
-    y: this.y+this.h*0.3,//alto
-    w: this.w * 0.4,            // mide el 34 % del ancho
-    h: this.h*0.7
-  }
-}
+        hitbox() {
+        return {
+            x: this.x + this.w *0.35,//*largo
+            y: this.y+this.h*0.3,//alto
+            w: this.w * 0.4,            // mide el 34 % del ancho
+            h: this.h*0.7
+        }
+        }
 
 }
 

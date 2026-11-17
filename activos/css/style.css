@@ -41,17 +41,35 @@ canvas {
   height: 48%;               /* proporcional al panel, así cabe en cualquier tamaño */
   image-rendering: pixelated;
 }
+.mensaje-final{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 30px;
+  color: #94f41e;
+  margin: 8px;
+}
 
 #btn-jugar{
   font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;
-  color: #94f41e;
+  color: #82f41e;
+  background: transparent;
+  border-bottom: 50px;
+  border-color: #f2ff3f;
+  padding: 2px 0;
+  cursor: pointer;
+  animation: parpadeo 1s steps(1) infinite;
+}
+#btn-reiniciar-partida{
+  font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: #25f41e;
   background: transparent;
   border: none;
   padding: 2px 0;
   cursor: pointer;
   animation: parpadeo 1s steps(1) infinite;
 }
+
 #btn-reiniciar{
 font-family: 'Orbitron', 'Times New Roman', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 20px;

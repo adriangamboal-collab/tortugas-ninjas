@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('menu').hidden = true
         game.start()
     })
+
+    document.getElementById('btn-reiniciar-partida').addEventListener('click',()=>{
+    location.reload()
+    })
     document.getElementById('btn-reiniciar').addEventListener('click',()=>{
         location.reload()
     })

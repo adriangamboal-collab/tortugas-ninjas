@@ -8,6 +8,7 @@ class Game {
         this.drawIntervalId = null
 
         this.healt = HEALT_INICIAL
+        this.score = SCORE_META
         this.ctx = this.canvas.getContext('2d')
         this.fp = new Fondos_Pantalla(this.ctx)
         this.tortuga = new Tortuga(this.ctx, TORTUGA_W, TORTUGA_H)
@@ -17,8 +18,8 @@ class Game {
         this.piza = []
         this.pizaTimeoutId = null
         this.enemies = []
-        this.enemiesTimeoutId = null
         this.score = 0
+        this.enemiesTimeoutId = null
         this.audioGame= new Audio('./activos/musica/musica_pantallas/musicaJuego.ogg')
         this.audioGame.volume =0.1
         this.audioGame.loop = true
@@ -31,6 +32,8 @@ class Game {
         this.audioScore.volume =1
         this.audioGameOver = new Audio ('./activos/musica/sonidos/Game_over.mp3')
         this.audioGameOver.volume=1
+        this.audioVictioria = new Audio ('./activos/musica/sonidos/objetivo_final.wav')
+        this.audioVictioria.volume =1
       
       
 
@@ -64,7 +67,7 @@ class Game {
       this.enemies.forEach(enemigo => enemigo.draw())
       this.drawHealt()
       this.drawScore() 
-                     // NUEVO
+                  
     }
 
     move(){
@@ -125,7 +128,7 @@ class Game {
           this.enemies.push(new Enemigos(
             this.ctx,
             this.canvas.width,
-            this.canvas.height - SUELO - ninja.h - randomY,   // CAMBIO: añadido "- SUELO"
+            this.canvas.height - SUELO - ninja.h - randomY,  
             ninja.w,
             ninja.h,
             ninja.sprite,
@@ -136,7 +139,7 @@ class Game {
             ninja.frames 
            ))
 
-            // CAMBIO: antes pasabas ENEMY_VX aq)
+        
           this.enemies[this.enemies.length-1].vx = -(ENEMY_VX + Up_vx)
           this.enemiesTimeoutId = null
         },tiempo)
@@ -147,11 +150,11 @@ class Game {
   
     checkBounds(){
       this.piza = this.piza.filter(piza => !(piza.x + piza.w < 0))
-      this.enemies = this.enemies.filter(e => e.x + e.w > 0)        // NUEVO
+      this.enemies = this.enemies.filter(e => e.x + e.w > 0)        
     }
 
     CheckColisions(){
-      if (this.invulnerable > 0) this.invulnerable--                // NUEVO
+      if (this.invulnerable > 0) this.invulnerable--                
 
       // PIZZAS: se cogen al tocarlas (sin cambios)
       this.piza = this.piza.filter(piza => {
@@ -163,7 +166,7 @@ class Game {
         return true
       })
 
-      // ENEMIGOS: dependen del carril y del salto           // CAMBIO: todo el bloque
+      // ENEMIGOS: dependen del carril y del salto           
         this.enemies = this.enemies.filter(e => {
         const resultado = this.tortuga.choque(e)
 
@@ -181,12 +184,23 @@ class Game {
 
         return true
       })
-
-      if (this.healt <= 0) {
+        
+      if (this.healt <= 0 ){
         this.stop()
         this.sonar(this.audioGameOver)
         document.getElementById('puntuacion-final').textContent = `Score: ${this.score}`
-        document.getElementById('gameover').hidden = false
+        document.getElementById('gameover').hidden = false}
+
+        if (this.score>=SCORE_META && this.healt>0){
+        this.stop()
+        this.sonar(this.audioVictioria)
+        setTimeout(()=>{
+        document.getElementById('puntuacion-victoria').textContent =`Score: ${this.score}`
+        document.getElementById('victoria').hidden = false
+        },500)
+        return
+    }
+
       }
 
   
@@ -222,7 +236,7 @@ class Game {
   
 
 
-    }
+    
 
 
     drawHealt(){
@@ -244,6 +258,4 @@ class Game {
       this.ctx.fillStyle = "#f2ff3f"
       this.ctx.fillText(`Score: ${this.score}`, 260, 40)
     }
-  
-  }
-
+}

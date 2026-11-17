@@ -5,6 +5,9 @@ const FPS = 1000/60
 const MARGEN_DERECHO =100
 const LIMITE_SUPERIOR =230
 const SUELO = 5
+const SCORE_META= 250
+
+// constantes tortugas
 const TORTUGA_W = 44
 const TORTUGA_H = 61
 const TORTUGA_VX = 5
@@ -13,6 +16,7 @@ const TORTUGA_RUN= TORTUGA_VX*2
 const TORTUGA_SALTO = 10
 const TORTUGA_AY = 0.35
 const VEL_BG = 0
+// constantes keyBoard
 const KEY_RIGHT = 39
 const KEY_LEFT = 37
 const KEY_UP= 38
@@ -76,16 +80,16 @@ const NINJAS =[
     hFrames:NINJA_WHITE_SPRITE_HFRAMES,
     damage:NINJA_WHITE_DAMAGE,
     score:NINJA_WHITE_SCORE,
-    w: NINJA_BLUE_W*115/102,
-    h: NINJA_BLUE_H},
+    w: NINJA_BLUE_W/0.8,
+    h: NINJA_BLUE_H/0.8},
     //amarillo
     {sprite:NINJA_YELLOW_SPRITE,
     vFrames:NINJA_YELLOW_SPRITE_VFRAMES,
     hFrames:NINJA_YELLOW_SPRITE_HFRAMES,
     damage:NINJA_YELLOW_DAMAGE,
     score:NINJA_YELLOW_SCORE,
-    w: NINJA_BLUE_W*4,
-    h: NINJA_BLUE_H*4},
+    w: NINJA_BLUE_W*0.8,
+    h: NINJA_BLUE_H*0.8},
     {
         //rojo
     sprite:NINJA_RED_SPRITE,
